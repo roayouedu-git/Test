@@ -1,0 +1,251 @@
+<title>영국 어학연수 등록 신청서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 한 장짜리 접수 서류. 섹션별 필드 묶음 → 하단에 학교 전달용 요약 자동 생성 */
+:root{
+  --bg:#f5f6f8; --paper:#ffffff; --ink:#1b2333; --muted:#5d6678; --line:#d9dde5;
+  --accent:#1f3d7a; --accent-soft:#e6ecf7; --req:#b3261e;
+  --display:"Gowun Batang",Georgia,serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161f; --paper:#1a202c; --ink:#e7eaf0; --muted:#a2aabb; --line:#2f3747;
+  --accent:#8fb0f0; --accent-soft:#223152; --req:#f2938c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161f; --paper:#1a202c; --ink:#e7eaf0; --muted:#a2aabb; --line:#2f3747;
+  --accent:#8fb0f0; --accent-soft:#223152; --req:#f2938c; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body);padding:24px 16px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:6px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.brand{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 28px/1.3 var(--display);margin:0;text-wrap:balance}
+header p{margin:0;color:var(--muted)}
+fieldset{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 18px 20px;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px 16px}
+legend{font:700 17px var(--display);padding:0 6px;color:var(--accent)}
+.full{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:500;color:var(--muted);min-width:0}
+label .r{color:var(--req)}
+input,select,textarea{font:15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;box-sizing:border-box}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.hint{font-size:12px;color:var(--muted);font-weight:400}
+.choice{display:flex;flex-wrap:wrap;gap:8px}
+.choice label{flex-direction:row;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 12px;color:var(--ink);font-weight:400;cursor:pointer}
+.choice input{width:auto}
+.choice label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+button{font:600 14px var(--body);border-radius:6px;padding:10px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--paper)}
+button.ghost{background:transparent;color:var(--accent)}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.out{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.out h2{font:700 17px var(--display);margin:0;color:var(--accent)}
+.out-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+pre{font:13px/1.55 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:12px;margin:0;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow:auto}
+.toast{font-size:13px;color:var(--accent);min-height:1.2em}
+.missing{color:var(--req);font-size:13px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="brand">사람사랑유학원 · RoaU</span>
+  <h1>영국 어학연수 등록 신청서</h1>
+  <p>학교와 숙소 예약에 필요한 정보입니다. 여권에 적힌 그대로 입력해 주세요. <span class="r" style="color:var(--req)">*</span> 표시는 필수입니다.</p>
+</header>
+
+<form id="f" novalidate>
+<div class="wrap" style="gap:20px">
+
+<fieldset>
+  <legend>1. 학생 정보</legend>
+  <label>영문 성 (Surname) <span class="r">*</span><input id="surname" name="surname" required placeholder="PARK" autocomplete="family-name"></label>
+  <label>영문 이름 (Given name) <span class="r">*</span><input id="given" name="given" required placeholder="EUNSOL" autocomplete="given-name"></label>
+  <label>한글 이름<input id="korname" name="korname" placeholder="박은솔"></label>
+  <label>성별 <span class="r">*</span><select id="gender" name="gender" required><option value="">선택</option><option>Female</option><option>Male</option></select></label>
+  <label>생년월일 <span class="r">*</span><input id="dob" name="dob" type="date" required></label>
+  <label>국적<input id="nationality" name="nationality" value="South Korea"></label>
+  <label>여권번호 <span class="r">*</span><input id="passport" name="passport" required></label>
+  <label>여권 만료일<input id="passexp" name="passexp" type="date"></label>
+  <label>휴대폰 <span class="r">*</span><input id="phone" name="phone" type="tel" required placeholder="010-0000-0000"></label>
+  <label>이메일 <span class="r">*</span><input id="email" name="email" type="email" required></label>
+  <label>카카오톡 ID<input id="kakao" name="kakao"></label>
+  <label class="full">한국 주소<input id="address" name="address"></label>
+</fieldset>
+
+<fieldset>
+  <legend>2. 비자</legend>
+  <label>비자 종류 <span class="r">*</span><select id="visa" name="visa" required><option value="">선택</option><option value="YMS">워킹홀리데이 (YMS)</option><option value="Standard Visitor">방문 (Standard Visitor, 6개월 이내)</option><option value="Student">학생비자 (Student)</option><option value="Other">기타</option></select></label>
+  <label>비자 시작일<input id="visastart" name="visastart" type="date"><span class="hint">YMS는 비자 시작일 이후 입국해야 합니다</span></label>
+  <label>비자 만료일<input id="visaend" name="visaend" type="date"></label>
+  <label>eVisa Share code<input id="sharecode" name="sharecode" placeholder="선택 입력"></label>
+</fieldset>
+
+<fieldset>
+  <legend>3. 코스</legend>
+  <label>학교<input id="school" name="school" value="IH London"></label>
+  <label>코스 <span class="r">*</span><input id="course" name="course" value="General English 20" required></label>
+  <label>개강일 (월요일) <span class="r">*</span><input id="cstart" name="cstart" type="date" required></label>
+  <label>기간 (주) <span class="r">*</span><input id="weeks" name="weeks" type="number" min="1" max="52" value="4" required></label>
+  <label>현재 영어 수준<select id="level" name="level"><option value="">선택</option><option>초급 (Elementary)</option><option>초중급 (Pre-intermediate)</option><option>중급 (Intermediate)</option><option>중상급 (Upper-intermediate)</option><option>고급 (Advanced)</option></select></label>
+  <label>연장 가능성<select id="extend" name="extend"><option value="">선택</option><option>없음</option><option>있음 (현지에서 결정)</option><option>확정 연장</option></select></label>
+</fieldset>
+
+<fieldset>
+  <legend>4. 숙소</legend>
+  <label>숙소 형태<select id="acctype" name="acctype"><option>학생 기숙사 (Residence)</option><option>홈스테이</option><option>숙소 필요 없음</option></select></label>
+  <label>희망 기숙사<input id="residence" name="residence" placeholder="예: iQ Tufnell Park"></label>
+  <label>객실 타입<select id="room" name="room"><option>En-suite (개인욕실, 공용주방)</option><option>Studio (개인욕실·주방)</option><option>상관없음</option></select></label>
+  <label>입실일 (일요일)<input id="checkin" name="checkin" type="date"><span class="hint">기숙사는 일요일 입실, 일요일 퇴실입니다</span></label>
+  <label>퇴실일<input id="checkout" name="checkout" type="date"></label>
+  <label>흡연<select id="smoke" name="smoke"><option>비흡연</option><option>흡연</option></select></label>
+  <label class="full">알레르기 · 식이 · 건강 관련 사항<textarea id="health" name="health" placeholder="없으면 '없음'"></textarea></label>
+</fieldset>
+
+<fieldset>
+  <legend>5. 항공 · 공항 픽업</legend>
+  <label>영국 도착일<input id="arrdate" name="arrdate" type="date"></label>
+  <label>도착 시간 (현지)<input id="arrtime" name="arrtime" type="time"></label>
+  <label>도착 공항<select id="airport" name="airport"><option value="">선택</option><option>Heathrow (LHR)</option><option>Gatwick (LGW)</option><option>Stansted (STN)</option><option>Luton (LTN)</option><option>London City (LCY)</option><option>St Pancras (Eurostar)</option></select></label>
+  <label>항공편명<input id="flight" name="flight" placeholder="예: KE907"></label>
+  <div class="full" role="group" aria-labelledby="pk-l">
+    <div id="pk-l" style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:6px">공항 픽업 (유료 옵션) <span class="r" style="color:var(--req)">*</span></div>
+    <div class="choice">
+      <label><input type="radio" name="pickup" id="pk1" value="신청 (편도: 공항 → 숙소)">신청 (공항 → 숙소)</label>
+      <label><input type="radio" name="pickup" id="pk2" value="신청 (왕복)">신청 (왕복)</label>
+      <label><input type="radio" name="pickup" id="pk3" value="미신청 (개별 이동)">미신청 (개별 이동)</label>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>6. 비상연락처 · 기타</legend>
+  <label>비상연락처 이름 <span class="r">*</span><input id="emname" name="emname" required></label>
+  <label>관계<input id="emrel" name="emrel" placeholder="예: 어머니"></label>
+  <label>연락처 <span class="r">*</span><input id="emphone" name="emphone" type="tel" required></label>
+  <div class="full" role="group" aria-labelledby="int-l">
+    <div id="int-l" style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:6px">관심 있는 프로그램 (워홀 학생)</div>
+    <div class="choice">
+      <label><input type="checkbox" name="interest" id="in1" value="CV 워크숍 · 면접 연습">CV 워크숍 · 면접 연습</label>
+      <label><input type="checkbox" name="interest" id="in2" value="한영 언어교환">한영 언어교환</label>
+      <label><input type="checkbox" name="interest" id="in3" value="소셜 프로그램">소셜 프로그램</label>
+      <label><input type="checkbox" name="interest" id="in4" value="Stay & Engage">Stay &amp; Engage</label>
+    </div>
+  </div>
+  <label class="full">요청 사항<textarea id="memo" name="memo"></textarea></label>
+  <div class="full choice"><label><input type="checkbox" id="agree" name="agree" required>입력한 정보를 학교·숙소 예약에 사용하는 데 동의합니다 <span class="r">*</span></label></div>
+</fieldset>
+
+<div class="actions">
+  <button type="submit">요약 만들기</button>
+  <button type="button" class="ghost" id="reset">모두 지우기</button>
+</div>
+<div class="missing" id="missing" aria-live="polite"></div>
+</div>
+</form>
+
+<section class="out" id="outKo" hidden>
+  <div class="out-head"><h2>상담실 전달용 (한글)</h2><button type="button" class="ghost" data-copy="preKo">복사</button></div>
+  <pre id="preKo"></pre>
+</section>
+<section class="out" id="outEn" hidden>
+  <div class="out-head"><h2>School booking info (English)</h2><button type="button" class="ghost" data-copy="preEn">Copy</button></div>
+  <pre id="preEn"></pre>
+</section>
+<div class="toast" id="toast" aria-live="polite"></div>
+</div>
+
+<script>
+const f=document.getElementById('f'), KEY='uk-reg-draft-v1';
+const v=id=>{const el=document.getElementById(id);return el?el.value.trim():''};
+const radio=n=>(f.querySelector(`input[name="${n}"]:checked`)||{}).value||'';
+const checks=n=>[...f.querySelectorAll(`input[name="${n}"]:checked`)].map(x=>x.value);
+const fmt=d=>{if(!d)return'-';const t=new Date(d+'T00:00:00');return t.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})};
+const dash=s=>s||'-';
+
+// 개강일 입력 시 숙소 일정 자동 제안 (전날 일요일 입실, 마지막 주 다음 일요일 퇴실)
+function suggestDates(){
+  const s=v('cstart'),w=parseInt(v('weeks'),10);
+  if(!s||!w)return;
+  const d=new Date(s+'T00:00:00');
+  const ci=new Date(d);ci.setDate(d.getDate()-((d.getDay()+7)%7||7));
+  const co=new Date(ci);co.setDate(ci.getDate()+7*w);
+  const iso=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
+  if(!document.getElementById('checkin').dataset.touched)document.getElementById('checkin').value=iso(ci);
+  if(!document.getElementById('checkout').dataset.touched)document.getElementById('checkout').value=iso(co);
+}
+['cstart','weeks'].forEach(id=>document.getElementById(id).addEventListener('change',suggestDates));
+['checkin','checkout'].forEach(id=>document.getElementById(id).addEventListener('input',e=>e.target.dataset.touched='1'));
+
+function courseEnd(){const s=v('cstart'),w=parseInt(v('weeks'),10);if(!s||!w)return'';const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+7*w-3);return d.toISOString().slice(0,10)}
+
+function build(){
+  const name=`${v('surname').toUpperCase()} ${v('given').toUpperCase()}`.trim();
+  const ints=checks('interest').join(', ')||'-';
+  const ko=[
+`■ 학생: ${name} (${dash(v('korname'))}) / ${dash(v('gender'))}`,
+`  생년월일 ${dash(v('dob'))} · 국적 ${dash(v('nationality'))}`,
+`  여권 ${dash(v('passport'))} (만료 ${dash(v('passexp'))})`,
+`  연락처 ${dash(v('phone'))} · ${dash(v('email'))} · 카톡 ${dash(v('kakao'))}`,
+`■ 비자: ${dash(v('visa'))} / 시작 ${dash(v('visastart'))} ~ 만료 ${dash(v('visaend'))}`,
+`■ 코스: ${dash(v('school'))} ${dash(v('course'))}, ${dash(v('weeks'))}주`,
+`  ${fmt(v('cstart'))} ~ ${fmt(courseEnd())} · 레벨 ${dash(v('level'))} · 연장 ${dash(v('extend'))}`,
+`■ 숙소: ${dash(v('acctype'))} / ${dash(v('residence'))} / ${dash(v('room'))}`,
+`  입실 ${fmt(v('checkin'))} → 퇴실 ${fmt(v('checkout'))} · ${dash(v('smoke'))}`,
+`  건강·식이: ${dash(v('health'))}`,
+`■ 항공: ${fmt(v('arrdate'))} ${dash(v('arrtime'))} ${dash(v('airport'))} ${dash(v('flight'))}`,
+`■ 공항 픽업: ${dash(radio('pickup'))}`,
+`■ 비상연락처: ${dash(v('emname'))} (${dash(v('emrel'))}) ${dash(v('emphone'))}`,
+`■ 관심 프로그램: ${ints}`,
+`■ 요청 사항: ${dash(v('memo'))}`].join('\n');
+  const pk=radio('pickup');
+  const pkEn=pk.startsWith('신청 (왕복)')?'Yes - return':pk.startsWith('신청')?'Yes - arrival (airport to residence)':pk?'No':'-';
+  const en=[
+`Student: ${name}`,
+`Gender: ${dash(v('gender'))}   DOB: ${fmt(v('dob'))}   Nationality: ${dash(v('nationality'))}`,
+`Passport: ${dash(v('passport'))} (exp. ${fmt(v('passexp'))})`,
+`Email: ${dash(v('email'))}   Mobile: ${dash(v('phone'))}`,
+`Visa: ${dash(v('visa'))}${v('visastart')?' (valid from '+fmt(v('visastart'))+')':''}`,
+``,
+`Course: ${dash(v('course'))}, ${dash(v('weeks'))} weeks`,
+`Dates: ${fmt(v('cstart'))} - ${fmt(courseEnd())}`,
+``,
+`Accommodation: ${v('acctype').startsWith('숙소 필요')?'Not required':dash(v('residence'))} (${v('room').split(' ')[0]})`,
+`Check-in: ${fmt(v('checkin'))}   Check-out: ${fmt(v('checkout'))}`,
+`Smoker: ${v('smoke')==='흡연'?'Yes':'No'}`,
+`Allergies / dietary / medical: ${v('health')&&v('health')!=='없음'?v('health'):'None'}`,
+``,
+`Arrival: ${fmt(v('arrdate'))} ${dash(v('arrtime'))}, ${dash(v('airport'))}, flight ${dash(v('flight'))}`,
+`Airport transfer: ${pkEn}`,
+``,
+`Emergency contact: ${dash(v('emname'))} (${dash(v('emrel'))}) ${dash(v('emphone'))}`].join('\n');
+  return {ko,en};
+}
+
+f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const miss=[...f.querySelectorAll('[required]')].filter(el=>el.type==='checkbox'?!el.checked:!el.value.trim())
+    .map(el=>(el.closest('label')?.childNodes[0]?.textContent||el.name).trim());
+  if(!radio('pickup'))miss.push('공항 픽업');
+  document.getElementById('missing').textContent=miss.length?'아직 입력하지 않은 필수 항목: '+miss.join(', '):'';
+  const {ko,en}=build();
+  document.getElementById('preKo').textContent=ko;
+  document.getElementById('preEn').textContent=en;
+  document.getElementById('outKo').hidden=false;
+  document.getElementById('outEn').hidden=false;
+  document.getElementById('outKo').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+});
+
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+  const pre=document.getElementById(b.dataset.copy),t=document.getElementById('toast');
+  navigator.clipboard.writeText(pre.textContent).then(()=>{t.textContent='복사했습니다. 카톡이나 메일에 붙여넣으세요.'})
+  .catch(()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent='텍스트를 선택해 두었습니다. Ctrl+C(⌘C)로 복사하세요.'});
+}));
+
+// 작성 중인 내용은 이 브라우저에만 임시 저장
+function save(){try{const d={};f.querySelectorAll('input,select,textarea').forEach(el=>{if(!el.id)return;d[el.id]=(el.type==='checkbox'||el.type==='radio')?el.checked:el.value});localStorage.setItem(KEY,JSON.stringify(d))}catch(_){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d)return;Object.entries(d).forEach(([id,val])=>{const el=document.getElementById(id);if(!el)return;if(el.type==='checkbox'||el.type==='radio')el.checked=val;else el.value=val})}catch(_){}}
+f.addEventListener('input',save);f.addEventListener('change',save);
+document.getElementById('reset').addEventListener('click',()=>{f.reset();try{localStorage.removeItem(KEY)}catch(_){};['checkin','checkout'].forEach(id=>delete document.getElementById(id).dataset.touched);document.getElementById('outKo').hidden=true;document.getElementById('outEn').hidden=true;document.getElementById('missing').textContent=''});
+load();
+</script>
